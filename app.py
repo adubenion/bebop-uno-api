@@ -25,11 +25,7 @@ class Cards(Resource):
 api.add_resource(Cards, '/cards')
 
 class Users(Resource):
-    def get(self, id):
-        # parser.add_argument('id', type=int)
-        # args = parser.parse_args()
-        # id = args.get('id')
-        # /users?id=
+    def get(self, id=None):
         return User_Model.User.get_users() if not id else User_Model.User.get_user(id)
     def post(self):
         return User_Model.User.create_user()
@@ -38,34 +34,7 @@ class Users(Resource):
     def delete(self):
         return User_Model.User.delete_user()
 
-api.add_resource(Users, '/users')
-api.add_resource(Users, '/<int:id>', endpoint='users')
-
-
-
-# @app.route('/cards')
-# def cards():
-#     return Card.Card_Model.get_cards()
-
-# @app.route('/users')
-# def get_users():
-#     return User.User_Model.get_users()
-
-# @app.route('/users/id')
-# def get_user():
-#     return User.User_Model.get_user(1)
-
-# @app.route('/users/create')
-# def create_user():
-#     return User.User_Model.create_user()
-
-# @app.route('/users/update')
-# def update_user():
-#     return User.User_Model.update_user()
-
-# @app.route('/users/delete')
-# def delete_user():
-#     return User.User_Model.delete_user()
+api.add_resource(Users, '/users', '/users/', '/users/<int:id>')
 
 if __name__ == "__main__":
     app.run(debug=True)
