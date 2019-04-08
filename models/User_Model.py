@@ -13,7 +13,7 @@ class User:
         return success
 
     def get_user (id):
-        success = f"I got one user! the id is {id}"
+        success = f"I got one user! The id is {id}"
         return success
 
     def create_user():
